@@ -1,0 +1,80 @@
+name: medlandia
+description: "A new Flutter project."
+publish_to: 'none'
+version: 2.2.0+144
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^4.0.0  
+  firebase_messaging: ^16.0.3
+  flutter_otp_text_field: ^1.1.0+2
+  image_picker: ^1.1.2
+  image_cropper: ^11.0.0
+  image: ^4.5.4  
+  file_picker: ^10.1.7
+  open_file: ^3.5.10
+  file_icon: ^1.0.0
+  path_provider: ^2.1.5
+  date_time_picker: ^2.1.0
+  sqflite: ^2.4.2
+  http: ^1.4.0
+  phonecodes: ^0.0.4
+  flutter_secure_storage: ^10.0.0
+  uuid: ^4.5.1
+  grouped_list: ^6.0.0
+
+  crypto: ^3.0.0
+  xml: ^6.5.0
+  convert: ^3.1.1
+  archive: ^4.0.7
+  #audioplayers: ^6.5.1
+  flutter_beep: ^1.0.0
+  flutter_launcher_icons: ^0.14.4
+  web_socket_channel: ^3.0.3
+  mime: ^2.0.0
+  file_selector: ^1.1.0
+  device_info_plus: ^12.3.0
+  package_info_plus: ^9.0.0
+
+  url_launcher: ^6.3.2
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  #config:
+    #enable-swift-package-manager: false
+  assets:
+    - assets/images/unknown.jpeg
+    - assets/images/logo-512.jpg
+    - assets/images/Medlandia.png
+    - assets/images/user-icon.png
+    - assets/images/doctor-icon.png
+    - assets/images/doctor-icon.jpeg
+    - assets/images/globe.png
+    - assets/images/closed.png
+    - assets/certs/ca.pem
+    - assets/certs/_server_cert.pem
+    - assets/certs/_server_cert.p12
+    - assets/certs/server-key.pem
+    - assets/licence/licence.txt
+    - assets/voice/001.aac
+    - assets/voice/002.aac
+    - assets/voice/003.aac
+
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo-512.jpg" 

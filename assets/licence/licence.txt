@@ -1,0 +1,54 @@
+Terms and Conditions of Use
+Last Updated: 5/10/2025
+These Terms and Conditions (“Terms”) govern your use of the Medlandia mobile and/or web application (the “App”), provided by [Company Name], (“we,” “us,” or “our”). By registering, accessing, or using the App, you agree to be bound by these Terms. If you do not agree, please do not use the App.
+
+1. Platform Purpose and Nature of Services
+The App is a digital platform that facilitates communication between licensed medical professionals ("Doctors") and individuals seeking medical information or guidance ("Users"). The App itself does not provide medical advice, diagnosis, treatment, or prescriptions, and no doctor-patient relationship is established between you and the App or its operators. All interactions and consultations are strictly between individual users and doctors.
+We do not endorse, verify, or assume responsibility for the accuracy or legality of any medical or other information exchanged through the App.
+
+2. Eligibility and Registration
+Use of the App is restricted to natural persons only. Legal entities (corporations, partnerships, associations, etc.) are not permitted to create accounts or use the App in any capacity.
+You must be at least 18 years of age or the age of majority in your jurisdiction.
+You agree to provide accurate, current, and complete information during the registration process and to update such information as necessary.
+
+3. Doctors' Identification and Verification
+All medical professionals must undergo a verification process to be listed on the App. 
+We have mechanisms in place to identify and verify the credentials of individuals who wish to register as doctors. If an individual fails to pass the identification and verification process, they will not be allowed to register or access the App as a doctor.
+We reserve the right to approve, reject, suspend, or terminate any doctor account at our sole discretion.
+
+4. Non-Disclosure and Confidentiality
+You agree to maintain the confidentiality of all information obtained through the App, including but not limited to:
+Medical advice or guidance received.
+Identity or personal information of other users or doctors.
+Content of chats, consultations, messages, files, and records.
+You may not share, disclose, publish, copy, reproduce, or disseminate any such information without the express written consent of the person(s) concerned and the App administrators.
+Unauthorized disclosure may result in immediate termination of access and possible legal action.
+
+5. Limitation of Liability
+To the fullest extent permitted by law:
+We make no warranties or guarantees regarding the accuracy, completeness, or usefulness of any communication or information exchanged via the App.
+We are not liable for any actions, omissions, medical advice, diagnosis, treatment plans, or prescriptions provided by any doctor through the App.
+You assume full responsibility for your decisions and actions based on any information obtained through the App.
+The App is provided "as is" without warranties of any kind.
+
+6. User Conduct and Account Termination
+You agree not to:
+Use the App for any illegal, fraudulent, or unauthorized purpose.
+Misrepresent your identity, qualifications, or affiliations.
+Harass, abuse, or threaten other users.
+Engage in any activity that may harm the integrity, security, or functionality of the App.
+We reserve the right to warn, suspend, or permanently block any user found engaging in illegal, suspicious, abusive, or unethical behavior, with or without notice.
+
+7. Privacy
+Our use of your personal data is governed by our Privacy Policy. By using the App, you consent to the collection and use of your information as described therein.
+
+8. Intellectual Property
+All content, trademarks, logos, and software in the App are owned by or licensed to Medlandia, unless otherwise stated. Unauthorized use, reproduction, or distribution is prohibited.
+
+9. Modifications
+We may revise these Terms at any time. Continued use of the App following any changes indicates your acceptance of the updated Terms. We will endeavor to notify users of significant changes.
+
+10. Governing Law
+These Terms shall be governed by and construed in accordance with the laws of the Republic of Armenia, without regard to its conflict of law principles. Any disputes shall be resolved in the competent courts of the Republic of Armenia..
+
+

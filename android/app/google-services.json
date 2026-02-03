@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "331776982510",
+    "project_id": "medlandia-bd805",
+    "storage_bucket": "medlandia-bd805.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331776982510:android:f7fe6412ae533d43f262ff",
+        "android_client_info": {
+          "package_name": "com.example.medlandia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpJ2C9_H9WfRo68_8GkCv75wDR8b1_6I8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331776982510:android:2930fb987556c449f262ff",
+        "android_client_info": {
+          "package_name": "org.insus.medlandia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpJ2C9_H9WfRo68_8GkCv75wDR8b1_6I8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
