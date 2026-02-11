@@ -1,0 +1,3 @@
+-keep class org.xmlpull.mxp1.** { *; }
+-keep class org.xmlpull.mxp1_serializer.** { *; }
+-keep class org.xmlpull.v1.** { *; } # Often related to MXParser/Serializer
