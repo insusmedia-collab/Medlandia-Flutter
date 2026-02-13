@@ -102,6 +102,7 @@ static Future<Map<String, String>> readAll() async {
         language: user['language']
       );
       currentUser?.email = user['email'];
+      (currentUser as DoctorModel).expierenceFrom = user['expYear'];
     } else {
       throw ArgumentError("Anknown user type ${user['userType']}");
     }

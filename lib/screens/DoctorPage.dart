@@ -137,11 +137,7 @@ void updateSkills() {
                       PopupMenuItem(value: "block", child: Row(children: [ 
                       Icon(Icons.block, color: Colors.red,),
                       Text(widget.doctorModel.isBlock ? "Unblock" : "Block", style: TextStyle(color:Colors.red),)
-                      ],)),
-                      /*                    
-                      PopupMenuItem(value: "Chat", child: Text("Some")),
-                      PopupMenuItem(value: "Other", child: Text("Other")),
-                      PopupMenuItem(value: "Another", child: Text("Another")),*/
+                      ],)),                     
                     ],
                 onSelected: (value) {
                   if (value == 'block') {
@@ -155,232 +151,171 @@ void updateSkills() {
           ],
         )
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            child: SafeArea(
-              child: Column(
+        body: SafeArea(
+          child: ListView(
+            children: [
+              Divider(height: 1, color: const Color.fromARGB(255, 206, 206, 207),),
+              getUserProfileSettingsButton(),
+              SizedBox(height: 15,),
+              Center(
+                child: ValueListenableBuilder(
+                      valueListenable: widget.doctorModel.userImageChangedNotifier,
+                      builder: (context, _, __) => CircleAvatar(
+                                                  radius: MediaQuery.of(context).size.width / 3.8,
+                                                  backgroundImage: widget.doctorModel.userImage,
+                                                ),
+                ),
+              ),
+              SizedBox(height: 25),
+              ValueListenableBuilder(valueListenable: widget.doctorModel.userNamechangeNorifier, 
+              builder: (context, _, __) => Text(widget.doctorModel.name, textAlign: TextAlign.center, style: TextStyle(fontSize: 22, color: BASIC_HEADER_COLOR, fontWeight: FontWeight.bold),),
+              ),
+              SizedBox(height: 25,),
+              Divider(height: 1, color: const Color.fromARGB(255, 206, 206, 207),),
+              SizedBox(height: 25,),
+
+              /***************** Spetiality *********************** */
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 5),
+                //color: const Color.fromARGB(255, 229, 232, 228),
+                child: Row( 
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                  Text("Spetialities",
+                  style: TextStyle(fontSize: 20, color: BASIC_HEADER_COLOR, fontWeight: FontWeight.bold),),
+                  SizedBox(width: 5,),
+                  //Expanded(child: Text("")),
+                  getSpetialisationButton()
+                  ] 
+                ),
+              ),
+              SizedBox(height: 2,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Divider(height: 1, color: const Color.fromARGB(255, 206, 206, 207),),
-                  getUserProfileSettingsButton(),
-                  SizedBox(height: 15,),
-                  Center(
-                    child: ValueListenableBuilder(
-                          valueListenable: widget.doctorModel.userImageChangedNotifier,
-                          builder: (context, _, __) => CircleAvatar(
-                                                      radius: MediaQuery.of(context).size.width / 3.8,
-                                                      backgroundImage: widget.doctorModel.userImage,
-                                                    ),
-                    ),
-                  ),
-                  SizedBox(height: 25),
-                  ValueListenableBuilder(valueListenable: widget.doctorModel.userNamechangeNorifier, 
-                  builder: (context, _, __) => Text(widget.doctorModel.name, style: TextStyle(fontSize: 22, color: BASIC_HEADER_COLOR, fontWeight: FontWeight.bold),),
-                  ),
-                  SizedBox(height: 25,),
-                  Divider(height: 1, color: const Color.fromARGB(255, 206, 206, 207),),
-                  SizedBox(height: 25,),
-                  /***************** Spetiality *********************** */
-                  Container(
-                    /*
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: const Color.fromARGB(255, 229, 232, 228),
-                        border: Border.all(color: Colors.grey, width: 1)
-                      ),*/
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    //color: const Color.fromARGB(255, 229, 232, 228),
-                    child: Row( 
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                      Text("Spetialities",
-                      style: TextStyle(fontSize: 20, color: BASIC_HEADER_COLOR, fontWeight: FontWeight.bold),),
-                      SizedBox(width: 5,),
-                      //Expanded(child: Text("")),
-                      getSpetialisationButton()
-                      ] 
-                    ),
-                  ),
-                  SizedBox(height: 2,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      ValueListenableBuilder(
-                          valueListenable: widget.doctorModel.spetializationChanged, 
-                          builder: (context, _, __){
-                            return Container(
-                              padding: EdgeInsets.symmetric(horizontal: 5),
-                              width: MediaQuery.of(context).size.width / 1.4,
-                              child:
-                              ListView.builder(
-                                shrinkWrap: true,
-                                //physics: NeverScrollableScrollPhysics(),
-                                itemCount: widget.doctorModel.speciality.length,
-                                itemBuilder: (column, i) => ListTile(
-                                    contentPadding: EdgeInsets.all(1),
-                                    leading: Icon(Icons.book, color: ICON_COLOR, size: 28,),
-                                    title: Text(widget.doctorModel.speciality[i].name, style: TextStyle(fontWeight: FontWeight.bold, color: BASIC_TEXT_COLOR),),
-                                    //subtitle: Text(widget.doctorModel.workplaceses[i].address),
-                                    //trailing: Icon(Icons.chevron_right),
-                                ),
-                              //Text(DoctorModel.spetialityToString(widget.doctorModel.speciality), softWrap: true, )
-                              )
-                              );
-                          })
-                    ],
-                  ),
-              
-                  /***************** Expierence **************************** */
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      /*  
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: const Color.fromARGB(255, 229, 232, 228),
-                        border: Border.all(color: Colors.grey, width: 1)
-                      ),*/
-                      padding: EdgeInsets.symmetric(horizontal: 5),
-                      //color: Color.fromARGB(255, 229, 232, 228),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [ 
-                          Row(
-                            children: [
-                              Text("Expierence", textAlign: TextAlign.left, 
-                                  style: TextStyle(fontSize: 20, color: BASIC_HEADER_COLOR, fontWeight: FontWeight.bold, ),
-                                  ),
-                              SizedBox(width: 10,),
-                        //Expanded(child: Text("33")),
-                              ValueListenableBuilder(valueListenable: widget.doctorModel.expierenceChanged, 
-                                  builder: (context, __, ___) {
-                                    return Text((widget.doctorModel.getExpierenceYears()).toString(), style: TextStyle(fontWeight: FontWeight.bold, color: BASIC_TEXT_COLOR),);
-                                  }
-                              ),
-                              SizedBox(width: 3,),
-                              Text("years"),
-                              ],)  ,
-                              getUserExpierenceButon()
-                      ]
-                      ),
-                    )
-                    ),
-                  SizedBox(height: 5,),
-                  /******************* Workplacec********************** */
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      /*
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: const Color.fromARGB(255, 229, 232, 228),
-                        border: Border.all(color: Colors.grey, width: 1)
-                      ),*/
-                      padding: EdgeInsets.symmetric(horizontal: 5),
-                      //color: const Color.fromARGB(255, 229, 232, 228),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [ 
-                          Text("Workplaces", textAlign: TextAlign.left, 
-                        style: TextStyle(fontSize: 20, color: BASIC_HEADER_COLOR, fontWeight: FontWeight.bold),),
-                        getUserWorkplaceSettingsButton()
-                      ]
-                      ),
-                    )
-                    ),
-                  SizedBox(height: 5,),
                   ValueListenableBuilder(
-                    valueListenable: widget.doctorModel.workplaceChaged, 
-                    builder: (context, _, __) {
+                      valueListenable: widget.doctorModel.spetializationChanged, 
+                      builder: (context, _, __){
                         return Container(
-                    //height: 50,
-                    //width: MediaQuery.of(context).size.width-10,
-                    child: ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: widget.doctorModel.workplaceses.length,
-                          itemBuilder: (column, i) {
-                            return ListTile(
-                              leading: Icon(Icons.work, size: 25, color: ICON_COLOR),
-                              title: Text(widget.doctorModel.workplaceses[i].hospitalName, style: TextStyle(fontWeight: FontWeight.bold, color: BASIC_TEXT_COLOR),),
-                              subtitle: Text(widget.doctorModel.workplaceses[i].address, style: TextStyle(color: BASIC_TEXT_COLOR),),
-                              trailing: Icon(Icons.chevron_right, color: ICON_COLOR,),
-                            );
-                          }
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          margin: EdgeInsets.all(8),
+                          width: MediaQuery.of(context).size.width / 1.4,
+                          child:
+
+                          Column(
+                            children: [
+                              for (int i = 0; i < widget.doctorModel.speciality.length; i++) 
+                              ListTile(
+                                contentPadding: EdgeInsets.all(1),
+                                leading: Icon(Icons.book, color: ICON_COLOR, size: 28,),
+                                title: Text(widget.doctorModel.speciality[i].name, style: TextStyle(fontWeight: FontWeight.bold, color: BASIC_TEXT_COLOR),),
+                                //subtitle: Text(widget.doctorModel.workplaceses[i].address),
+                                //trailing: Icon(Icons.chevron_right),
+                            )
+                            ],
                           ),
-                  );
-                    } 
-                  ),
-                  
-                  SizedBox(height: 5,),
-                  /*********** SKILLS **********************************/
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      /*
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: const Color.fromARGB(255, 229, 232, 228),
-                        border: Border.all(color: Colors.grey, width: 1)
-                      ),*/
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      //color: const Color.fromARGB(255, 229, 232, 228),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [ 
-                          Text("Skills", textAlign: TextAlign.left, 
-                        style: TextStyle(fontSize: 20, color: BASIC_HEADER_COLOR, fontWeight: FontWeight.bold),),
-                        getUserSkillsButton()
-                      ]
-                      ),
-                    )
-                    ),
-                  ValueListenableBuilder(
-                    valueListenable: skillsChangeNotifier, 
-                    builder: (context, _, __) => getUserSkillsWindow()),
-                  SizedBox(height: 5,),
-                  /*
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text("Activities", textAlign: TextAlign.left, 
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),)
-                    ),*/
-                   SizedBox(height: 5,),
-                   /*
-                   SizedBox(
-                    height: 180,
-                    child: ListView.builder(
-                      //shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 10,
-                      itemBuilder: (column, i) => Container(
-                        width: 100, // Fixed width for each item
-                        height: 150,
-                        margin: EdgeInsets.all(8),
-                        child: Column(
-                          children: [
-              
-                            ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Image.network(
-                                  'https://picsum.photos/150/100?random=$i',
-                                  height: 100,
-                                  width: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              Text('Item ${i + 1}'),
-                          ],
-                        ),
-                      )
-                      )
-                      ), */
-                      
-               
+
+                          );
+                      })
                 ],
               ),
-            ),
+          
+              /***************** Expierence **************************** */
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(                  
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  //color: Color.fromARGB(255, 229, 232, 228),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [ 
+                      Row(
+                        children: [
+                          Text("Expierence", textAlign: TextAlign.left, 
+                              style: TextStyle(fontSize: 20, color: BASIC_HEADER_COLOR, fontWeight: FontWeight.bold, ),
+                              ),
+                          SizedBox(width: 10,),
+                          ValueListenableBuilder(valueListenable: widget.doctorModel.expierenceChanged, 
+                              builder: (context, __, ___) {
+                                return Text((widget.doctorModel.getExpierenceYears()).toString(), style: TextStyle(fontWeight: FontWeight.bold, color: BASIC_TEXT_COLOR),);
+                              }
+                          ),
+                          SizedBox(width: 3,),
+                          Text("years"),
+                          ],)  ,
+                          getUserExpierenceButon()
+                  ]
+                  ),
+                )
+                ),
+              SizedBox(height: 5,),
+              /******************* Workplacec********************** */
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  //color: const Color.fromARGB(255, 229, 232, 228),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [ 
+                      Text("Workplaces", textAlign: TextAlign.left, 
+                    style: TextStyle(fontSize: 20, color: BASIC_HEADER_COLOR, fontWeight: FontWeight.bold),),
+                    getUserWorkplaceSettingsButton()
+                  ]
+                  ),
+                )
+                ),
+              SizedBox(height: 5,),
+              ValueListenableBuilder(
+                valueListenable: widget.doctorModel.workplaceChaged, 
+                builder: (context, _, __) {
+                    return Container(child: 
+                      Column(
+                        children: [
+                          for (int i = 0; i < widget.doctorModel.workplaceses.length; i++)
+                          ListTile(
+                          leading: Icon(Icons.work, size: 25, color: ICON_COLOR),
+                          title: Text(widget.doctorModel.workplaceses[i].hospitalName, style: TextStyle(fontWeight: FontWeight.bold, color: BASIC_TEXT_COLOR),),
+                          subtitle: Text(widget.doctorModel.workplaceses[i].address, style: TextStyle(color: BASIC_TEXT_COLOR),),
+                          trailing: Icon(Icons.chevron_right, color: ICON_COLOR,),
+                        )
+                        ],
+                      )
+              );
+                } 
+              ),
+              
+              SizedBox(height: 5,),
+              /*********** SKILLS **********************************/
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  /*
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: const Color.fromARGB(255, 229, 232, 228),
+                    border: Border.all(color: Colors.grey, width: 1)
+                  ),*/
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  //color: const Color.fromARGB(255, 229, 232, 228),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [ 
+                      Text("Skills", textAlign: TextAlign.left, 
+                    style: TextStyle(fontSize: 20, color: BASIC_HEADER_COLOR, fontWeight: FontWeight.bold),),
+                    getUserSkillsButton()
+                  ]
+                  ),
+                )
+                ),
+              ValueListenableBuilder(
+                valueListenable: skillsChangeNotifier, 
+                builder: (context, _, __) => getUserSkillsWindow()),
+              SizedBox(height: 5,),
+               
+                  
+           
+            ],
           ),
         ),
     );
@@ -424,33 +359,23 @@ void updateSkills() {
 
   Widget getUserSkillsWindow() {
     return Container(
-      child: ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: widget.doctorModel.skills.length,
-              itemBuilder: (column, i) => ListTile(
-                      leading: Icon(Icons.check, size: 20, color: ICON_COLOR,),
-                      title: Text(widget.doctorModel.skills[i].skillName, style: TextStyle(fontWeight: FontWeight.bold, color: BASIC_TEXT_COLOR),),
-                      subtitle: Text(widget.doctorModel.skills[i].skillDescr, style: TextStyle(color: BASIC_TEXT_COLOR),),
-                      trailing: Icon(Icons.chevron_right, color: ICON_COLOR,),
-        )
+      child: Column(             
+              children: [
+              for (int i = 0; i < widget.doctorModel.skills.length; i++)
+                  ListTile(
+                    leading: Icon(Icons.dashboard_customize_rounded, size: 20, color: ICON_COLOR,),
+                    title: Text(widget.doctorModel.skills[i].skillName, style: TextStyle(fontWeight: FontWeight.bold, color: BASIC_TEXT_COLOR),),
+                    subtitle: Text(widget.doctorModel.skills[i].skillDescr, style: TextStyle(color: BASIC_TEXT_COLOR),),
+                    trailing: Icon(Icons.chevron_right, color: ICON_COLOR,),
+              )
+        ]
         ),
     );
   }
 
   Widget getUserProfileSettingsButton() {
     if (currentUser?.id != widget.doctorModel.id) {
-      return Container(); /*Align(
-        alignment: Alignment.centerLeft,
-        child: IconButton(
-          onPressed: () {
-            mainUser!.doAddRoster(widget.doctorModel.id.toString());            
-            itemsChanged.value = !itemsChanged.value;
-            Navigator.pushReplacement(context, 
-              MaterialPageRoute(builder: (cx) => ChatScreen(recipient: widget.doctorModel) ));
-          }, 
-          icon: Icon(Icons.message)),
-      );*/ 
+      return SizedBox();
     } else {
       return Align(
         alignment: Alignment.centerRight,

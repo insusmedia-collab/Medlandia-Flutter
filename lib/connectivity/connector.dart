@@ -127,6 +127,20 @@ static Future<bool> initMainUser({required String id}) async {
       
   }
 
+ 
+
+  static Future<List<dynamic>> search({required int userType, int spetialityId=-1, String countryCode="null", String name ="null", required int indexFrom, required int lenght}) async {
+    return await call(null, {
+      'func'  : 'searchUsers',
+      'p1'    : userType.toString(),
+      'p2'    : spetialityId.toString(),
+      'p3'    : countryCode,
+      'p4'    : name,
+      'p5'    : indexFrom.toString(),
+      'p6'    : lenght.toString()
+    });
+  }
+
   static Future<void> notify(String type, int toUserId, int fromId, String text) async {
     final result = await call(null, {
       'func' : 'notify', 

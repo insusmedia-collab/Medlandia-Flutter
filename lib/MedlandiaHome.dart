@@ -358,58 +358,6 @@ final TextEditingController searchNameController = TextEditingController();
         )
         );
     } else if (_tabcontroller.index == 1) {
-      _searchChatMemberController.text = "";
-      showCenterMenuDialog(
-        context,
-        Column(
-          children: [
-            
-            Divider(height: 2,),            
-            TextField(
-              controller: _searchChatMemberController ,
-              decoration: InputDecoration(
-                prefix: Icon(Icons.person),
-                hintText: "Search by name",
-                suffixIcon: IconButton(onPressed: () {
-                  if (_searchChatMemberController.text.isEmpty) return;
-                    for (int i = 0; i < dummyChatItems.length; i++) {
-                      if (dummyChatItems[i].name.toLowerCase().startsWith(_searchChatMemberController.text.toLowerCase())) {
-                        BaseMemberModel mem = dummyChatItems.removeAt(i);
-                        dummyChatItems.insert(0, mem);
-                      }
-                    }
-                    dummyChatItemsChanged.value = !dummyChatItemsChanged.value;
-                    Navigator.pop(context);
-                }, icon: Icon(Icons.search))
-              ),
-              
-            ),
-            Divider(height: 2,),
-            buildMenuOption(context, 'Default', Icons.public, () {
-              //Navigator.pop(context);
-              for (int i = 0; i < dummyChatItems.length; i++) {
-                      if (dummyChatItems[i].unreadedMessages > 0) {
-                        BaseMemberModel mem = dummyChatItems.removeAt(i);
-                        dummyChatItems.insert(0, mem);
-                      }
-                    }
-            }),
-            buildMenuOption(context, 'Blocked', Icons.block, () {
-              //Navigator.pop(context);
-              for (int i = 0; i < dummyChatItems.length; i++) {
-                      if (dummyChatItems[i].isBlock) {
-                        BaseMemberModel mem = dummyChatItems.removeAt(i);
-                        dummyChatItems.insert(0, mem);
-                      }
-                    }
-                    dummyChatItemsChanged.value = !dummyChatItemsChanged.value;
-                    //Navigator.pop(context);
-            }),
-            
-          ],
-        ),
-      );
-    } else if (_tabcontroller.index == 2) {
       searchCountry = null;
       searchSpetiality = null;
       setState(() {
@@ -448,7 +396,7 @@ final TextEditingController searchNameController = TextEditingController();
                   spetialityId: searchSpetiality!.id, 
                   countryCode: null, 
                   name: null, 
-                  index: doctorLoadIndex);
+                  index: doctorLoadIndex, lenght: doctorLoadCount);
                 Navigator.pop(context);
               },
             ),
@@ -456,7 +404,7 @@ final TextEditingController searchNameController = TextEditingController();
               controller: searchNameController,
               decoration: InputDecoration(
                         border: UnderlineInputBorder(),
-                        hintText: "Name",                       
+                        hintText: "Name",
                         labelText: "Search by name",
                         enabledBorder: UnderlineInputBorder( // Normal border
                             borderSide: BorderSide(color: Colors.grey),
@@ -470,7 +418,7 @@ final TextEditingController searchNameController = TextEditingController();
                               spetialityId:  -1, 
                               countryCode: null, 
                               name: searchNameController.text, 
-                              index: doctorLoadIndex);
+                              index: doctorLoadIndex, lenght: doctorLoadCount);
                               Navigator.pop(context);
                           }, icon: Icon(Icons.search))
                       ),
@@ -480,7 +428,9 @@ final TextEditingController searchNameController = TextEditingController();
         ),
       );
       return;
-    } else if (_tabcontroller.index == 3) {
+    } else if (_tabcontroller.index == 2) {
+
+     } if (_tabcontroller.index == 3) {
       showCenterMenuDialog(
         context,
         Column(

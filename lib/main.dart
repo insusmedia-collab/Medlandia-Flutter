@@ -204,7 +204,6 @@ class MainApp extends StatelessWidget  /*with WidgetsBindingObserver */ {
                 return Updater(version: version,);
               } else {
                 if (lastDataBaseCleanStr == null) {
-                  //print("--database clean date not seted");
                   LocalStore.write(key: "databaseCleanDate", value: DateTime.now().toString());
                   return MedlandiaHome();
                 } else {

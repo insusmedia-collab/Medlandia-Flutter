@@ -229,7 +229,7 @@ BaseMemberModel toMember(result) {
         return member;
 }
 
-Future<void> searchDoctor({required int spetialityId, required String? countryCode, required String? name, required int index}) async {
+Future<void> searchDoctor({required int spetialityId, required String? countryCode, required String? name, required int index, required int lenght}) async {
 
   
 
@@ -239,8 +239,8 @@ Future<void> searchDoctor({required int spetialityId, required String? countryCo
     'p2'      : spetialityId.toString(),
     'p3'      : countryCode ?? 'null',
     'p4'      : name ?? 'null',
-    'p5'      : doctorLoadIndex.toString(),
-    'p6'      : doctorLoadCount.toString()
+    'p5'      : index.toString(),
+    'p6'      : lenght.toString()
   };
 
   final response = await call(null, request);

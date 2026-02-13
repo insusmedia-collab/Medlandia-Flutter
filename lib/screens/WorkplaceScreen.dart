@@ -22,12 +22,7 @@ class WorkplaceScreen extends StatefulWidget {
   State<WorkplaceScreen> createState() => _WorkplaceScreenState();
 }
 
-class _WorkplaceScreenState extends State<WorkplaceScreen> {
-  /*final TextEditingController _textHospitalNameController =
-      TextEditingController();
-  final TextEditingController _textHospitalAddressController =
-      TextEditingController();*/
-  //int? _editingIndex;
+class _WorkplaceScreenState extends State<WorkplaceScreen> {  
   int placeId = -1;
   double lon = -1;
   double lat = -1;
@@ -97,9 +92,19 @@ class _WorkplaceScreenState extends State<WorkplaceScreen> {
   }
 
   void _addOrUpdateItem() async {
-     if (hospitalId < 1) return;
+     if (hospitalId < 1) {
+      openHospitalNameChooser(context);
+      return;
+     }
+     if (googlePlaceId.isEmpty) {
+      openLocationChooser();
+      return;
+     } 
+
       if (placeId < 1) {
-        if (googlePlaceId.isEmpty) return;
+        if (googlePlaceId.isEmpty) {           
+          return;
+        }
         final r = await call(null, {
           'func': "addPlace",
           'p1': lon.toString(),
@@ -244,33 +249,22 @@ class _WorkplaceScreenState extends State<WorkplaceScreen> {
                             ), // BoxBorder.lerp(a, b, t) .all(width: 1, ),
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          padding: EdgeInsets.all(15),
+                          padding: EdgeInsets.all(7),
                           child: InkWell(
                             onTap:
-                                () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder:
-                                        (builder) => HospitalsScreen(
-                                          hospitalId: hospitalId,
-                                          hospitalName: hospital,
-                                          callback: (hospName, hospId) {
-                                            hospital = hospName;
-                                            hospitalId = hospId;
-                                            hospitalChanged.value = hospName;
-                                          },
-                                        ),
+                                () => openHospitalNameChooser(context),
+                            child: Padding(
+                              padding: EdgeInsetsGeometry.all(7),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.home, color: ICON_COLOR),
+                                  Expanded(child: Container()),
+                                  ValueListenableBuilder(
+                                    valueListenable: hospitalChanged,
+                                    builder: (context, _, __) => Text(hospital),
                                   ),
-                                ),
-                            child: Row(
-                              children: [
-                                Icon(Icons.home, color: ICON_COLOR),
-                                Expanded(child: Container()),
-                                ValueListenableBuilder(
-                                  valueListenable: hospitalChanged,
-                                  builder: (context, _, __) => Text(hospital),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -291,38 +285,7 @@ class _WorkplaceScreenState extends State<WorkplaceScreen> {
                           padding: EdgeInsets.all(7),
                           child: InkWell(
                             onTap:
-                                () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder:
-                                        (builder) => LocationChooserScren(
-                                          addr: addr,
-                                          lat: lat,
-                                          lon: lon,
-                                          googlePlaceId: googlePlaceId,
-                                          id: placeId,
-                                          hospId: hospitalId,
-                                          callback: (
-                                            id,
-                                            ln,
-                                            lt,
-                                            add,
-                                            googlePlace,
-                                          ) {
-                                            //(String address, String googlePlaceId, int id, double lat, double lon) {  //(int id, double ln, double lt, String add,  String place) {
-        
-                                            placeId = id;
-                                            addr = add;
-                                            lat = lt;
-                                            lon = ln;
-                                            googlePlaceId = googlePlace;
-                                            setState(() {
-                                              addressChanged.value = addr;
-                                            });
-                                          },
-                                        ),
-                                  ),
-                                ),
+                                () => openLocationChooser(),
                             child: Padding(
                               padding: EdgeInsets.all(7),
         
@@ -422,5 +385,37 @@ class _WorkplaceScreenState extends State<WorkplaceScreen> {
 
       persistentFooterButtons: getActions(),
     );
+  }
+
+   Future<dynamic>  openLocationChooser() {
+    return Navigator.push(context, MaterialPageRoute(builder: (context) => LocationChooserScren(addr: addr,lat: lat,lon: lon,googlePlaceId: googlePlaceId,id: placeId,hospId: hospitalId,
+                                        callback: (id,ln,lt,add,googlePlace,) {
+                                          placeId = id;
+                                          addr = add;
+                                          lat = lt;
+                                          lon = ln;
+                                          googlePlaceId = googlePlace;
+                                          setState(() {
+                                            addressChanged.value = addr;
+                                          });
+                                        },
+                                      )
+    )); 
+  }
+
+  Future<dynamic> openHospitalNameChooser(BuildContext context) {
+    return Navigator.push(context, MaterialPageRoute(
+                                  builder:
+                                      (builder) => HospitalsScreen(
+                                        hospitalId: hospitalId,
+                                        hospitalName: hospital,
+                                        callback: (hospName, hospId) {
+                                          hospital = hospName;
+                                          hospitalId = hospId;
+                                          hospitalChanged.value = hospName;
+                                        },
+                                      ),
+                                ),
+                              );
   }
 }

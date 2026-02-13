@@ -102,12 +102,14 @@ class _DoctorSkillsScreenState extends State<DoctorSkillsScreen> {
                           controller: _textSkillNameController,
                           readOnly: true,
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorSkills(updateFunc: (id, name) {
-                              if (id < 1 || name == null) return;
-                              skillId = id;
-                              skillName = name;
-                              _textSkillNameController.text = name;
-                            })));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorSkills(updateFunc: (id, name) {
+                                setState(() {
+                                  if (id < 1 || name == null) return;
+                                    skillId = id;
+                                    skillName = name;
+                                    _textSkillNameController.text = name;
+                                  });                                
+                              })));                 
                           },
                           decoration: InputDecoration(
                             labelText: 'Skill',

@@ -623,21 +623,8 @@ class _MessageScreenState extends State<MessageScreen> {
                     leading: Icon(Icons.person),
                     title: Text('Visit card'),
                   ),
-                ),   
-                PopupMenuItem(
-                  value: 'worklocation',
-                  child: ListTile(
-                    leading: Icon(Icons.person),
-                    title: Text('Work location'),
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 'invoice',
-                  child: ListTile(
-                    leading: Icon(Icons.person),
-                    title: Text('Invoice'),
-                  ),
-                ),             
+                ),               
+                           
               ],
               child: Icon(Icons.more_horiz),
             ),
